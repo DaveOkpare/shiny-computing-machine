@@ -16,7 +16,6 @@ END_LINE = 20
 
 
 class OpenAI:
-
     @staticmethod
     def create_env_file(OPENAI_API_KEY):
         if os.path.exists(CONFIG):
@@ -39,7 +38,7 @@ class OpenAI:
 
     @staticmethod
     def read_file(path: str, start_line: int = None, end_line: int = None):
-        with open(path, 'r') as f:
+        with open(path, "r") as f:
             data = f.readlines()
 
             if start_line is None:
@@ -78,8 +77,8 @@ class OpenAI:
             top_p=1.0,
             frequency_penalty=0.0,
             presence_penalty=0.0,
-            stop=["\n\n#"]
+            stop=["\n\n#"],
         )
-        output = response['choices'][0]['text']
-        clean_output = re.sub(r'#', '', output)
+        output = response["choices"][0]["text"]
+        clean_output = re.sub(r"#", "", output)
         return clean_output
